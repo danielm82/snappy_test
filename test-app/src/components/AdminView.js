@@ -38,16 +38,16 @@ class AdminView extends Component {
         let rows = [];
 
         this.props.columns.forEach(column => {
-            headers.push(<th>{column.label}</th>);
+            headers.push(<th key={column.name}>{column.label}</th>);
         });
 
-        this.state.data.forEach(data => {
+        this.state.data.forEach((data, index) => {
             let tds = [];
             this.props.columns.forEach(column => {
-                tds.push(<td>{data[column.name]}</td>);
+                tds.push(<td key={column.name}>{data[column.name]}</td>);
             });
 
-            rows.push(<tr>{tds}</tr>);
+            rows.push(<tr key={index}>{tds}</tr>);
         });        
 
 
